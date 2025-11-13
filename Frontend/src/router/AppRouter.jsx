@@ -1,4 +1,5 @@
 import { Router, Route } from "react-router";
+import { Login } from "../pages/auth/Login";
 
 export const AppRouter = () => {
   return (
