@@ -1,10 +1,19 @@
-export const Footer = () => {
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-800 text-white p-4 text-center">
-      <p>&copy; {new Date().getFullYear()} - 2025 - Derechos de autor - Colman Máximo -</p>
+    <footer className="bg-zinc-950 border-t border-zinc-800 text-zinc-400 text-center py-6">
+      <p className="text-sm">
+        &copy; {currentYear}{" "}
+        <span className="text-white font-medium hover:text-red-500 transition">
+          COLMAN MAXIMO JAVIER ALEXIS - 2025
+        </span>
+      </p>
+      <p className="text-xs mt-1 text-zinc-500 tracking-wide">
+        Trabajo Práctico Integrador II
+      </p>
     </footer>
   );
 };
 
-
-//
+export default Footer;

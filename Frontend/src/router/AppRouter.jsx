@@ -3,8 +3,8 @@ import { PrivateRoutes } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
 
 // Paginas
-import { Login } from "../pages/Login";
-import { Register } from "../pages/Register";
+import { Login } from "../pages/auth/Login"
+import { Register } from "../pages/auth/Register";
 import { Home } from "../pages/Home";
 import { Profile } from "../pages/Profile";
 import { Tasks } from "../pages/Tasks";
