@@ -90,13 +90,7 @@ export const Register = ({ onLoginSuccess }) => {
         <p className="text-center text-sm text-sky-400 mb-8">
           // Completa los campos para registrarte en el sistema
         </p>
-        
-        {/* Error Display */}
-        {error && (
-          <div className="mb-6 text-sm text-red-400 bg-red-900/40 border border-red-700 p-3 rounded-lg animate-pulse">
-            {error}
-          </div>
-        )}
+
 
         {/* Formulario */}
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -106,7 +100,7 @@ export const Register = ({ onLoginSuccess }) => {
               htmlFor="username"
               className="block text-sm font-medium text-sky-400 mb-2"
             >
-              // S Y S T E M &nbsp; U S E R N A M E
+             U S E R N A M E
             </label>
             <input
               id="username"
@@ -128,7 +122,7 @@ export const Register = ({ onLoginSuccess }) => {
               htmlFor="email"
               className="block text-sm font-medium text-sky-400 mb-2"
             >
-              // E L E C T R O N I C &nbsp; A D D R E S S
+            A D D R E S S
             </label>
             <input
               id="email"
@@ -150,7 +144,7 @@ export const Register = ({ onLoginSuccess }) => {
               htmlFor="password"
               className="block text-sm font-medium text-sky-400 mb-2"
             >
-              // P R O T O C O L &nbsp; P A S S W O R D
+            P A S S W O R D
             </label>
             <input
               id="password"
@@ -173,7 +167,7 @@ export const Register = ({ onLoginSuccess }) => {
                 htmlFor="firstname"
                 className="block text-sm font-medium text-sky-400 mb-2"
               >
-                // F I R S T &nbsp; N A M E
+                 F I R S T &nbsp; N A M E
               </label>
               <input
                 id="firstname"
@@ -193,7 +187,7 @@ export const Register = ({ onLoginSuccess }) => {
                 htmlFor="lastname"
                 className="block text-sm font-medium text-sky-400 mb-2"
               >
-                // L A S T &nbsp; N A M E
+               L A S T &nbsp; N A M E
               </label>
               <input
                 id="lastname"
@@ -216,7 +210,7 @@ export const Register = ({ onLoginSuccess }) => {
               htmlFor="dni"
               className="block text-sm font-medium text-sky-400 mb-2"
             >
-              // I D &nbsp; D O C U M E N T
+             I D &nbsp; D O C U M E N T
             </label>
             <input
               id="dni"
