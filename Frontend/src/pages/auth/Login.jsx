@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { useForm } from "../../hooks/useForm.js";
 import { useState } from "react";
 
-export const Login = ({ onLoginSucces }) => {
+export const Login = ({ onLoginSuccess }) => {
   const { values, handleChange, handleReset } = useForm({
     username: "",
     password: "",
@@ -28,7 +28,7 @@ export const Login = ({ onLoginSucces }) => {
       });
       const data = await response.json();
       if (response.ok) {
-        onLoginSucces();
+        onLoginSuccess();
       } else {
         setError("Credenciales invalidas");
         alert(data.message);

@@ -1,30 +1,34 @@
 import { Navigate, Route, Routes } from "react-router";
-import { PrivateRoutes } from "./PrivateRoutes";
-import { PublicRoutes } from "./PublicRoutes";
+import {PrivateRoutes} from "./PrivateRoutes";
+import {PublicRoutes} from "./PublicRoutes";
 
 // Paginas
-import { Login } from "../pages/auth/Login"
-import { Register } from "../pages/auth/Register";
-import { Home } from "../pages/Home";
-import { Profile } from "../pages/Profile";
-import { Tasks } from "../pages/Tasks";
+import {Home} from "../pages/Home";
+import {Login} from "../pages/auth/Login";
+import {Register} from "../pages/auth/Register";
+import {Profile} from "../pages/Profile";
+import {Tasks} from "../pages/Tasks";
 
-// Enrutador principal
-export const AppRouter = ({ authStatus, onLogin, onLogout }) => {
+const AppRouter = ({ authStatus, onLogin, onLogout }) => {
   return (
     <Routes>
-      {/* Rutas publicas */}
+      {/* Rutas Publicas */}
       <Route element={<PublicRoutes authStatus={authStatus} />}>
-        <Route path="/login" element={<Login onLoginSucces={onLogin} />} />
-        <Route path="/register" element={<Register />} />
-      </Route>
-      {/* Rutas privadas */}
-      <Route element={<PrivateRoutes authStatus={authStatus} />}>
-        <Route path="/home" element={<Home />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/profile" element={<Profile onLogout={onLogout} />} />
+        <Route path="/login" element={<Login onLoginSuccess={onLogin} />} />
+        <Route
+          path="/register"
+          element={<Register onLoginSuccess={onLogin} />}
+        />
       </Route>
 
+      {/* Rutas Privadas */}
+      <Route element={<PrivateRoutes authStatus={authStatus} />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile onLogout={onLogout} />} />
+        <Route path="/tasks" element={<Tasks />} />
+      </Route>
+
+      {/* Redireccion por defecto */}
       <Route
         path="*"
         element={
@@ -34,3 +38,5 @@ export const AppRouter = ({ authStatus, onLogin, onLogout }) => {
     </Routes>
   );
 };
+
+export default AppRouter;
