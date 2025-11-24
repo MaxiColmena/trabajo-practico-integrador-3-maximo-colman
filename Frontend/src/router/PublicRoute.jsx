@@ -1,12 +1,7 @@
-import { Routes, Route } from "react-router";
-import { LoginPage } from "../pages/LoginPage.jsx";
+import { useEffect, useState } from "react";
+import { Navigate, Outlet } from "react-router";
+import { Loading } from "../components/Loading";
 
-export const PublicRoute = () => {
-  return (
-    <Routes>
-        <Route path="/login" element={<LoginPage />} />
-    </Routes>
-  )
-}
-
-
+export const PublicRoutes = ({authStatus}) => {
+  return authStatus === "authenticated" ? <Navigate to={"/home"} /> : <Outlet />;
+};

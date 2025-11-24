@@ -1,15 +1,36 @@
-import { Router, Route, Routes } from "react-router";
-import { Register } from "../pages/auth/Register";
-import { Login } from "../pages/auth/Login";
-import { Home } from "../pages/Home";
+import { Navigate, Route, Routes } from "react-router";
+import { PrivateRoutes } from "./PrivateRoutes";
+import { PublicRoutes } from "./PublicRoutes";
 
-export const AppRouter = () => {
+// Paginas
+import { Login } from "../pages/Login";
+import { Register } from "../pages/Register";
+import { Home } from "../pages/Home";
+import { Profile } from "../pages/Profile";
+import { Tasks } from "../pages/Tasks";
+
+// Enrutador principal
+export const AppRouter = ({ authStatus, onLogin, onLogout }) => {
   return (
     <Routes>
-      {/*el path es la ruta de la url y el component es el componente que quiero renderizar */}
-      <Route path="/home" Component={Home} />
-      <Route path="/login" Component={Login} />
-      <Route path="/register" Component={Register} />
+      {/* Rutas publicas */}
+      <Route element={<PublicRoutes authStatus={authStatus} />}>
+        <Route path="/login" element={<Login onLoginSucces={onLogin} />} />
+        <Route path="/register" element={<Register />} />
+      </Route>
+      {/* Rutas privadas */}
+      <Route element={<PrivateRoutes authStatus={authStatus} />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/profile" element={<Profile onLogout={onLogout} />} />
+      </Route>
+
+      <Route
+        path="*"
+        element={
+          <Navigate to={authStatus === "authenticated" ? "/home" : "/login"} />
+        }
+      />
     </Routes>
   );
-}
+};
