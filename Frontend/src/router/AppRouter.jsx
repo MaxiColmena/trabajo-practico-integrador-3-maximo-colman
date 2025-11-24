@@ -1,6 +1,6 @@
 import { Router, Route, Routes } from "react-router";
-import { Login } from "../pages/auth/Login";
 import { Register } from "../pages/auth/Register";
+import { Login } from "../pages/auth/Login";
 import { Home } from "../pages/Home";
 
 export const AppRouter = () => {

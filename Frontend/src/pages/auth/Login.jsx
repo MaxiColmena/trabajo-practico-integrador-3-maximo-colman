@@ -1,19 +1,40 @@
 import { useForm } from "../../hooks/useForm"
-import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 export const Login = () => {
-  const { handleChange, HandleReset, formValue } = useForm({
+  const navigate = useNavigate();
+  const { handleChange, handleReset, formValue } = useForm({
     username: "",
     password: "",
   });
 
-  useEffect(() => {
-    HandleReset();
-  }, []);
+  //Esta función evita que la página se recargue al enviar el formulario
+  const handleSumit = async(e) => {
+    e.preventDefault()
 
-  return (
-    <>
-      <form>
+    try {
+      const response = await fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json", 
+          
+        },
+        body: JSON.stringify(formValue),
+        credentials: 'include'
+      });
+
+      if(response.ok) {
+        navigate("/Home")
+      }else {
+        console.log("Credenciales inválidas o incorrectas");
+      }
+    } catch (error) {
+      console.log("Error al iniciar sesión:", error);
+    }
+  }
+    return (
+      <div>
+    <form onSubmit={handleSumit}>
         <label>Username</label>
         <input type="text" name="username" placeholder="username" value={formValue.username} onChange={handleChange} required/>
         <br/>
@@ -22,6 +43,8 @@ export const Login = () => {
         <br/>
         <button type="submit">Iniciar Sesion</button>
       </form>
-    </>
+    </div> 
+    
   )
-}
+};
+

@@ -13,17 +13,15 @@ export const useForm = (initialValues = {}) => {
             [name]: value,
         });
     }
-
     
     //función para resetear el formulario a su estado inicial
-    const HandleReset = () => {
+    const handleReset = () => {
         setFormValue (initialValues);
     }
-
 
   return {
           formValue,
           handleChange,
-          HandleReset
+          handleReset
       }
 }
